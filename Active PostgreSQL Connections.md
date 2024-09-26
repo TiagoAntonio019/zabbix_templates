@@ -82,6 +82,7 @@ sudo systemctl restart zabbix-agent
 
   - Name: Active PostgreSQL Connections
   - Graph type: Normal
+  - Show triggers: yes (true)
   - Items: Active PostgreSQL Connections
 
 6.2 - Save the Graph
