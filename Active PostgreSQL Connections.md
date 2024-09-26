@@ -1,0 +1,53 @@
+## Step 1: Create a Custom User Parameter
+1.1 - Edit the Zabbix Agent Configuration File: Open the Zabbix agent configuration file, typically located at /etc/zabbix/zabbix_agentd.conf.
+
+```
+sudo vi /etc/zabbix/zabbix_agentd.conf
+```
+
+1.2 - Add a User Parameter: At the end of the configuration file, add the following line:
+
+```
+UserParameter=pg.active.connections, sudo lsof -i :5432 | grep ESTABLISHED | wc -l
+```
+
+1.3 - Save and Exit: Save the changes and exit the editor.
+
+## Step 2: Allow Passwordless Sudo
+If you want to avoid entering a password when running the command, you may need to allow the Zabbix user to run lsof without a password. Edit the sudoers file:
+
+```
+sudo EDITOR=vim visudo
+```
+2.1 - Add the following line to grant permission:
+
+```
+zabbix ALL=(ALL) NOPASSWD: /usr/bin/lsof
+```
+Make sure to replace /usr/bin/lsof with the path to the lsof command if it's located elsewhere.
+
+## Step 3: Restart Zabbix Agent
+After making the changes, restart the Zabbix agent to apply the new configuration:
+
+```
+sudo systemctl restart zabbix-agent
+```
+
+## Step 4: Create an Item in Zabbix
+4.1 - Go to the Zabbix Web Interface.
+
+- Navigate to Configuration > Hosts.
+
+- Select the Host where you want to add the monitoring.
+
+- Click on Items and then Create Item.
+
+- Fill in the details:
+
+  - Name: Active PostgreSQL Connections
+  - Type: Zabbix agent
+  - Key: pg.active.connections
+  - Type of Information: Numeric (unsigned)
+  - Update Interval: Set the desired interval (e.g., 60 seconds).
+
+4.2 - Save the Item.
