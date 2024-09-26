@@ -51,3 +51,24 @@ sudo systemctl restart zabbix-agent
   - Update Interval: Set the desired interval (e.g., 60 seconds).
 
 4.2 - Save the Item.
+
+## Step 5: Create a Trigger
+5.1 - Go to the Zabbix Web Interface
+
+- Navigate to Configuration > Hosts
+
+- Select the host
+
+- Select the Triggers tab
+
+- Add a new Trigger
+
+- Fill in the details:
+
+  - Name: PostgreSQL Connections Threshold
+  - Severity: High
+  - Expression: ``` last(/mk_solutions_master/pg.active.connections)>{$PG_MAX} ```
+
+- Create a Macro on host scope, fill in details:
+  - Macro: {$PG_MAX}
+  - Value: integer (you must type the ideal value for you)
