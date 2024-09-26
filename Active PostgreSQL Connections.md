@@ -57,9 +57,7 @@ sudo systemctl restart zabbix-agent
 
 - Navigate to Configuration > Hosts
 
-- Select the host
-
-- Select the Triggers tab
+- Select the 'Triggers' cell of desired host
 
 - Add a new Trigger
 
@@ -72,3 +70,18 @@ sudo systemctl restart zabbix-agent
 - Create a Macro on host scope, fill in details:
   - Macro: {$PG_MAX}
   - Value: integer (you must type the ideal value for you)
+
+## Step 6: Create a Graph
+6.1 - Navigate to Configuration > Hosts
+
+- Select the 'Gaphs' cell of desired host
+
+- Add a new Graph
+
+- Fill in the details:
+
+  - Name: Active PostgreSQL Connections
+  - Graph type: Normal
+  - Items: Active PostgreSQL Connections
+
+6.2 - Save the Graph
