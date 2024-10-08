@@ -5,4 +5,4 @@ Monitoring Bind9 queries: [Template Bind9](https://github.com/TiagoAntonio019/za
 
 How to monitor Postgresql (active connections counter): [Integration with PG](https://github.com/TiagoAntonio019/zabbix_templates/blob/main/Active%20PostgreSQL%20Connections.md)
 
-How to monitor SFP ports: [Integration with PG](https://github.com/TiagoAntonio019/zabbix_templates/blob/main/Sinal_SFP_Mikrotik.yaml)
+How to monitor SFP ports: [Sinal SFP Mikrotik](https://github.com/TiagoAntonio019/zabbix_templates/blob/main/Sinal_SFP_Mikrotik.yaml)
